@@ -1,11 +1,11 @@
 # VarDumper for SMF
 ![SMF 2.1](https://img.shields.io/badge/SMF-2.1-ed6033.svg?style=flat)
 ![License](https://img.shields.io/github/license/dragomano/vardumper-for-smf)
-![PHP](https://img.shields.io/badge/PHP-^7.3-blue.svg?style=flat)
+![PHP](https://img.shields.io/badge/PHP-^7.2.5-blue.svg?style=flat)
 
 * **Author:** Bugo
 * **License:** [MIT](https://github.com/dragomano/VarDumper-for-SMF/blob/main/LICENSE)
-* **Compatible with:** SMF 2.1 RC4+ / PHP 7.3+
+* **Compatible with:** SMF 2.1 RC4+ / PHP 7.2.5+
 * **Hooks only:** Yes
 
 ## Description
