@@ -8,10 +8,10 @@ declare(strict_types = 1);
  * @package VarDumper
  * @link https://github.com/dragomano/VarDumper-for-SMF
  * @author Bugo <bugo@dragomano.ru>
- * @copyright 2021 Bugo
+ * @copyright 2021—2022 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
  *
- * @version 0.1
+ * @version 0.2
  */
 
 namespace Bugo\VarDumper;
@@ -31,12 +31,13 @@ class Integration
 
 	public function loadTheme()
 	{
-		global $context;
+		global $modSettings, $context;
 
 		addInlineCss('
 		pre.sf-dump {
-			font-size: 14px !important;
-			max-height: 2% !important;
+			font-size: ' . (empty($modSettings['vd_font_size']) ? '1rem' : $modSettings['vd_font_size']) . ' !important;
+			max-height: 300px;
+			overflow: auto !important;
 		}');
 
 		if ($context['current_action'] === 'admin')
@@ -73,7 +74,11 @@ class Integration
 		$context['post_url'] = $scripturl . '?action=admin;area=modsettings;save;sa=var_dumper';
 		$context[$context['admin_menu_name']]['tab_data']['tabs']['var_dumper'] = array('description' => $txt['vd_description']);
 
+		if (empty($modSettings['vd_font_size']))
+			updateSettings(array('vd_font_size' => '1rem'));
+
 		$config_vars = array(
+			array('text', 'vd_font_size'),
 			array('check', 'vd_show_string_length'),
 			array('check', 'vd_use_light_theme'),
 		);
