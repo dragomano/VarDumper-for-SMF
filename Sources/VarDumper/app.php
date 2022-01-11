@@ -8,16 +8,17 @@ declare(strict_types = 1);
  * @package VarDumper
  * @link https://github.com/dragomano/VarDumper-for-SMF
  * @author Bugo <bugo@dragomano.ru>
- * @copyright 2021 Bugo
+ * @copyright 2021—2022 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
  *
- * @version 0.1
+ * @version 0.2
  */
 
 if (! defined('SMF'))
 	die('No direct access...');
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/Integration.php';
 
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
@@ -30,3 +31,6 @@ VarDumper::setHandler(function ($var) use ($modSettings) {
 	$dumper->setTheme(empty($modSettings['vd_use_light_theme']) ? 'dark' : 'light');
 	$dumper->dump($cloner->cloneVar($var));
 });
+
+$app = new \Bugo\VarDumper\Integration;
+$app->hooks();
