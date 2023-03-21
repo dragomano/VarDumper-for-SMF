@@ -8,10 +8,10 @@ declare(strict_types = 1);
  * @package VarDumper
  * @link https://github.com/dragomano/VarDumper-for-SMF
  * @author Bugo <bugo@dragomano.ru>
- * @copyright 2021—2022 Bugo
+ * @copyright 2021—2023 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
  *
- * @version 0.2
+ * @version 0.3
  */
 
 if (! defined('SMF'))
