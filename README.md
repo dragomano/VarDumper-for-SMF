@@ -2,9 +2,9 @@
 ![SMF 2.1](https://img.shields.io/badge/SMF-2.1-ed6033.svg?style=flat)
 ![License](https://img.shields.io/github/license/dragomano/vardumper-for-smf)
 ![Hooks only: Yes](https://img.shields.io/badge/Hooks%20only-YES-blue)
-![PHP](https://img.shields.io/badge/PHP-^7.1.3-blue.svg?style=flat)
+![PHP](https://img.shields.io/badge/PHP-^8.1-blue.svg?style=flat)
 
-* **Tested on:** PHP 8.0.24 / MariaDB 10.6.7
+* **Tested on:** PHP 8.1.31 / MariaDB 11.2.2
 * **Languages:** English, Russian
 
 ## Description
