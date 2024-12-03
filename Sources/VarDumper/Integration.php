@@ -1,17 +1,11 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 /**
- * Integration.php
- *
  * @package VarDumper
  * @link https://github.com/dragomano/VarDumper-for-SMF
  * @author Bugo <bugo@dragomano.ru>
- * @copyright 2021—2023 Bugo
+ * @copyright 2021—2024 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
- *
- * @version 0.3
  */
 
 namespace Bugo\VarDumper;
@@ -21,7 +15,7 @@ if (! defined('SMF'))
 
 class Integration
 {
-	public function hooks()
+	public function hooks(): void
 	{
 		add_integration_function('integrate_load_theme', __CLASS__ . '::loadTheme#', false, __FILE__);
 		add_integration_function('integrate_admin_areas', __CLASS__ . '::adminAreas#', false, __FILE__);
@@ -29,7 +23,7 @@ class Integration
 		add_integration_function('integrate_modify_modifications', __CLASS__ . '::modifyModifications#', false, __FILE__);
 	}
 
-	public function loadTheme()
+	public function loadTheme(): void
 	{
 		global $modSettings, $context;
 
@@ -40,25 +34,24 @@ class Integration
 			overflow: auto !important;
 		}');
 
-		if ($context['current_action'] === 'admin')
-			loadLanguage('VarDumper');
+		$context['current_action'] === 'admin' && loadLanguage('VarDumper');
 	}
 
-	public function adminAreas(array &$admin_areas)
+	public function adminAreas(array &$admin_areas): void
 	{
 		global $txt;
 
-		$admin_areas['config']['areas']['modsettings']['subsections']['var_dumper'] = array($txt['vd_title']);
+		$admin_areas['config']['areas']['modsettings']['subsections']['var_dumper'] = [$txt['vd_title']];
 	}
 
-	public function adminSearch(array &$language_files, array &$include_files, array &$settings_search)
+	public function adminSearch(array &$language_files, array &$include_files, array &$settings_search): void
 	{
-		$settings_search[] = array(array($this, 'settings'), 'area=modsettings;sa=var_dumper');
+		$settings_search[] = [[$this, 'settings'], 'area=modsettings;sa=var_dumper'];
 	}
 
-	public function modifyModifications(array &$subActions)
+	public function modifyModifications(array &$subActions): void
 	{
-		$subActions['var_dumper'] = array($this, 'settings');
+		$subActions['var_dumper'] = [$this, 'settings'];
 	}
 
 	/**
@@ -72,14 +65,15 @@ class Integration
 		$context['settings_title'] = $txt['settings'];
 		$context['post_url'] = $scripturl . '?action=admin;area=modsettings;save;sa=var_dumper';
 
-		if (empty($modSettings['vd_font_size']))
-			updateSettings(array('vd_font_size' => '1rem'));
+		if (empty($modSettings['vd_font_size'])) {
+			updateSettings(['vd_font_size' => '1rem']);
+		}
 
-		$config_vars = array(
-			array('text', 'vd_font_size'),
-			array('check', 'vd_show_string_length'),
-			array('check', 'vd_use_light_theme'),
-		);
+		$config_vars = [
+			['text', 'vd_font_size'],
+			['check', 'vd_show_string_length'],
+			['check', 'vd_use_light_theme'],
+		];
 
 		if ($return_config)
 			return $config_vars;
