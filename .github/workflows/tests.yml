@@ -16,8 +16,12 @@ jobs:
           extensions: pcov
           coverage: pcov
 
-      - name: Install dependencies
-        run: composer update
+      - name: Install root dependencies
+        run: composer update --prefer-dist --no-progress --no-interaction
+
+      - name: Install VarDumper module dependencies
+        working-directory: ./src/Sources/VarDumper
+        run: composer update --prefer-dist --no-progress --no-interaction
 
       - name: Run tests
         run: vendor/bin/testo --coverage
