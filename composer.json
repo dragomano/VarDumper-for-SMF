@@ -1,0 +1,29 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Bugo\\VarDumper\\": "src\\Sources\\VarDumper"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "rector/rector": "^2.4",
+    "testo/testo": "^0.10.2"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "scripts": {
+    "check": "vendor/bin/rector process --dry-run --clear-cache",
+    "test": "vendor/bin/testo"
+  }
+}
