@@ -204,6 +204,10 @@ final class IntegrationTest
 		array $modSettings = [],
 		array $get = [],
 	): void {
+		if (! defined('SMF')) {
+			define('SMF', 1);
+		}
+
 		$GLOBALS['integration_test_state'] = ['functions' => []];
 		$GLOBALS['context'] = $context;
 		$GLOBALS['txt'] = $txt;
