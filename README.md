@@ -1,10 +1,12 @@
 # VarDumper for SMF
+
 ![SMF 2.1](https://img.shields.io/badge/SMF-2.1-ed6033.svg?style=flat)
 ![License](https://img.shields.io/github/license/dragomano/vardumper-for-smf)
 ![Hooks only: Yes](https://img.shields.io/badge/Hooks%20only-YES-blue)
-![PHP](https://img.shields.io/badge/PHP-^8.1-blue.svg?style=flat)
+![PHP](https://img.shields.io/badge/PHP-^8.2-blue.svg?style=flat)
+[![codecov](https://codecov.io/gh/dragomano/VarDumper-for-SMF/graph/badge.svg?token=O8IEF3VYCV)](https://codecov.io/gh/dragomano/VarDumper-for-SMF)
 
-* **Tested on:** PHP 8.1.31 / MariaDB 11.2.2
+* **Tested on:** PHP 8.5.4
 * **Languages:** English, Russian
 
 ## Description
