@@ -4,7 +4,7 @@
  * @package VarDumper
  * @link https://github.com/dragomano/VarDumper-for-SMF
  * @author Bugo <bugo@dragomano.ru>
- * @copyright 2021—2024 Bugo
+ * @copyright 2021—2026 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
  */
 
@@ -17,10 +17,10 @@ class Integration
 {
 	public function hooks(): void
 	{
-		add_integration_function('integrate_load_theme', __CLASS__ . '::loadTheme#', false, __FILE__);
-		add_integration_function('integrate_admin_areas', __CLASS__ . '::adminAreas#', false, __FILE__);
-		add_integration_function('integrate_admin_search', __CLASS__ . '::adminSearch#', false, __FILE__);
-		add_integration_function('integrate_modify_modifications', __CLASS__ . '::modifyModifications#', false, __FILE__);
+		add_integration_function('integrate_load_theme', self::class . '::loadTheme#', false, __FILE__);
+		add_integration_function('integrate_admin_areas', self::class . '::adminAreas#', false, __FILE__);
+		add_integration_function('integrate_admin_search', self::class . '::adminSearch#', false, __FILE__);
+		add_integration_function('integrate_modify_modifications', self::class . '::modifyModifications#', false, __FILE__);
 	}
 
 	public function loadTheme(): void
@@ -63,7 +63,7 @@ class Integration
 
 		$context['page_title']     = $txt['vd_title'];
 		$context['settings_title'] = $txt['settings'];
-		$context['post_url'] = $scripturl . '?action=admin;area=modsettings;save;sa=var_dumper';
+		$context['post_url']       = $scripturl . '?action=admin;area=modsettings;save;sa=var_dumper';
 
 		if (empty($modSettings['vd_font_size'])) {
 			updateSettings(['vd_font_size' => '1rem']);
@@ -75,8 +75,9 @@ class Integration
 			['check', 'vd_use_light_theme'],
 		];
 
-		if ($return_config)
+		if ($return_config) {
 			return $config_vars;
+		}
 
 		$context[$context['admin_menu_name']]['tab_data']['description'] = $txt['vd_description'];
 

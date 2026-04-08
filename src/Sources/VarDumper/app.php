@@ -4,7 +4,7 @@
  * @package VarDumper
  * @link https://github.com/dragomano/VarDumper-for-SMF
  * @author Bugo <bugo@dragomano.ru>
- * @copyright 2021—2024 Bugo
+ * @copyright 2021—2026 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
  */
 
